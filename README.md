@@ -2,6 +2,7 @@
 
 ## Datos del Estudiante
 - **Nombre:** ALEJANDRO CAPARICONA AVILE
+- **ci** 13180270
 - **Curso:** TEM-742 Tecnologías Emergentes II
 - **Fecha:** 26 DE MAYO 2026
 
