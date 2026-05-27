@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>✏️ Editar Cita</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label>Fecha:</label>
+        <input type="date" name="fecha" value="{{ cita.fecha }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Hora:</label>
+        <input type="time" name="hora" value="{{ cita.hora }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Médico:</label>
+        <select name="medico_id" class="form-control" required>
+            {% for m in medicos %}
+            <option value="{{ m.id }}" {% if m.id == cita.medico_id %}selected{% endif %}>
+                {{ m.nombre }} - {{ m.especialidad }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Paciente:</label>
+        <select name="paciente_id" class="form-control" required>
+            {% for p in pacientes %}
+            <option value="{{ p.id }}" {% if p.id == cita.paciente_id %}selected{% endif %}>
+                {{ p.nombre }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Actualizar</button>
+    <a href="/citas" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

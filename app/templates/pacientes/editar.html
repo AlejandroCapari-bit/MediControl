@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>✏️ Editar Paciente</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label>Nombre completo:</label>
+        <input type="text" name="nombre" value="{{ paciente.nombre }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Teléfono:</label>
+        <input type="text" name="telefono" value="{{ paciente.telefono or '' }}" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">Actualizar</button>
+    <a href="/pacientes" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

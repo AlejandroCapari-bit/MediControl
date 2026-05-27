@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>📅 Listado de Citas</h2>
+    <a href="/citas/crear" class="btn btn-success">+ Nueva Cita</a>
+</div>
+
+{% if citas %}
+<table class="table table-striped table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Médico</th>
+            <th>Paciente</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in citas %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.fecha }}</td>
+            <td>{{ c.hora }}</td>
+            <td>{{ c.medico.nombre }} ({{ c.medico.especialidad }})</td>
+            <td>{{ c.paciente.nombre }}</td>
+            <td>
+                <a href="/citas/editar/{{ c.id }}" class="btn btn-warning btn-sm">✏️ Editar</a>
+                <a href="/citas/eliminar/{{ c.id }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar?')">🗑️ Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">No hay citas registradas</div>
+{% endif %}
+{% endblock %}

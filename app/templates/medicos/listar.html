@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>👨‍⚕️ Listado de Médicos</h2>
+    <a href="/medicos/crear" class="btn btn-success">+ Nuevo Médico</a>
+</div>
+
+{% if medicos %}
+<table class="table table-striped table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for m in medicos %}
+        <tr>
+            <td>{{ m.id }}</td>
+            <td>{{ m.nombre }}</td>
+            <td>{{ m.especialidad }}</td>
+            <td>
+                <a href="/medicos/editar/{{ m.id }}" class="btn btn-warning btn-sm">✏️ Editar</a>
+                <a href="/medicos/eliminar/{{ m.id }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar?')">🗑️ Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">No hay médicos registrados</div>
+{% endif %}
+{% endblock %}

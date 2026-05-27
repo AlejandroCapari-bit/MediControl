@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>✏️ Editar Médico</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label>Nombre completo:</label>
+        <input type="text" name="nombre" value="{{ medico.nombre }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label>Especialidad:</label>
+        <input type="text" name="especialidad" value="{{ medico.especialidad }}" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Actualizar</button>
+    <a href="/medicos" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
